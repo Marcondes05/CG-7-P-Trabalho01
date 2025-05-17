@@ -39,7 +39,7 @@ env\Scripts\activate
 
 ### 3. Instale as dependências
 ```bash
-pip install flask pillow
+pip install -r requirements.txt
 ```
 
 ### 4. Estrutura do Projeto
@@ -54,7 +54,7 @@ pip install flask pillow
 │   └── style.css           # Estilos da página
 ├── templates/
 │   └── index.html          # Página HTML principal
-└── README.md               # Este arquivo
+└── README.md               
 ```
 
 
@@ -75,16 +75,6 @@ Acesse no navegador: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 💡 Melhorias Futuras
-
-- Adicionar novos filtros (ex: preto e branco, sépia, pixelização)
-- Suporte a múltiplas imagens por vez
-- Deploy em nuvem (Heroku, Render, etc.)
-- Histórico de imagens processadas por sessão
-
----
-
 ## 👤 Autor
 
-Desenvolvido por **Marcondes**.  
-Sinta-se à vontade para contribuir ou sugerir melhorias! 🚀
+Desenvolvido por **Marcondes Neto**. 🚀
