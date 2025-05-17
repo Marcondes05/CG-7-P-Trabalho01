@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Filtro de Imagens</title>
+
+    <!-- Link para o arquivo de estilo CSS na pasta static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Título principal da página -->
+    <h1>Envie uma Imagem e Aplique um Filtro</h1>
+
+    <!-- Formulário de envio de imagem e seleção de filtro -->
+    <form method="post" enctype="multipart/form-data">
+        <!-- Upload da imagem -->
+        <input type="file" name="image" required><br><br>
+
+        <!-- Campo de seleção do filtro desejado -->
+        <label for="filtro">Escolha um filtro:</label>
+        <select name="filtro">
+            <option value="negativo">Negativo</option>
+            <option value="mediana">Mediana</option>
+            <option value="gaussiano">Gaussiano</option>
+            <option value="personalizado">Personalizado</option>
+        </select><br><br>
+
+        <!-- Botão para submeter o formulário -->
+        <input type="submit" value="Aplicar Filtro">
+    </form>
+
+    <!-- Se existirem imagens original e processada, exibe o resultado -->
+    {% if original_image and processed_image %}
+        <h2>Resultado:</h2>
+
+        <!-- Container para exibir as imagens lado a lado -->
+        <div style="display: flex; gap: 20px;">
+            
+            <!-- Imagem original -->
+            <div>
+                <h3>Original</h3>
+                <img src="{{ original_image }}" width="300">
+            </div>
+
+            <!-- Imagem processada com destaque do filtro aplicado -->
+            <div class="resultado">
+                <h3>Processada</h3>
+
+                <!-- Destaque do nome do filtro aplicado -->
+                <p style="background-color: #dfe6e9; padding: 6px 12px; border-radius: 8px; font-weight: bold; display: inline-block;">
+                    Filtro aplicado: {{ filtro_aplicado|capitalize }}
+                </p>
+
+                <!-- Exibição da imagem processada -->
+                <img src="{{ processed_image }}" width="300"><br>
+
+                <!-- Link para download da imagem processada -->
+                <a href="{{ processed_image }}" download>📥 Baixar Imagem</a>
+            </div>
+        </div>
+    {% endif %}
+</body>
+</html>
