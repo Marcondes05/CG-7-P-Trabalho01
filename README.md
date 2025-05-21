@@ -15,8 +15,8 @@ Filtros disponíveis:
 
 ### 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/seu-repo.git
-cd seu-repo
+git clone https://github.com/Marcondes05/CG-7-P-Trabalho01.git
+cd CG-7-P-Trabalho01
 ```
 
 ### 2. Crie um ambiente virtual (recomendado):
