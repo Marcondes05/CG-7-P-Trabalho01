@@ -1,64 +1,41 @@
+# 🖼️ Aplicador de Filtros de Imagem com Flask
 
-# 🖼️ Plataforma Web de Filtros com PIL
+Este projeto é uma aplicação web simples feita com **Flask** que permite ao usuário enviar uma imagem e aplicar diversos filtros de processamento digital.
 
-## 📌 Descrição
-
-Esta é uma aplicação web desenvolvida com **Flask** e **Pillow (PIL)** que permite ao usuário **enviar uma imagem** e aplicar diferentes filtros de processamento, como:
-
+Filtros disponíveis:
 - Negativo
 - Mediana
 - Gaussiano
-- Filtro personalizado (realce de bordas)
-
-As imagens processadas podem ser visualizadas lado a lado com a original e baixadas com um clique.
+- Escala de Cinza
+- Preto & Branco
 
 ---
 
-## 🚀 Como usar
+## 🚀 Como executar o projeto
 
-### 1. Clone o repositório (ou baixe os arquivos)
+### 1. Clone o repositório:
 ```bash
-git clone https://github.com/Marcondes05/CG-7-P-Trabalho01.git
-cd CG-7-P-Trabalho01
-
+git clone https://github.com/seu-usuario/seu-repo.git
+cd seu-repo
 ```
 
-### 2. Crie e ative o ambiente virtual
-
-**Linux/macOS:**
+### 2. Crie um ambiente virtual (recomendado):
 ```bash
-python3 -m venv env
-source env/bin/activate
+python -m venv venv
+source venv/bin/activate  # Linux/macOS
+venv\Scripts\activate    # Windows
 ```
 
-**Windows:**
-```bash
-python -m venv env
-env\Scripts\activate
-```
-
-### 3. Instale as dependências
+### 3. Instale as dependências:
 ```bash
 pip install -r requirements.txt
 ```
-
-### 4. Estrutura do Projeto
-
-```
-.
-├── app.py                  # Aplicação principal Flask
-├── filtros.py              # Lógica de processamento de imagem
-├── static/
-│   ├── uploads/            # Imagens enviadas
-│   ├── processed/          # Imagens com filtro
-│   └── style.css           # Estilos da página
-├── templates/
-│   └── index.html          # Página HTML principal
-└── README.md               
+> **Obs:** Caso não tenha um arquivo `requirements.txt`, instale manualmente:
+```bash
+pip install flask pillow numpy
 ```
 
-
-### 5. Execute o servidor Flask
+### 4. Execute a aplicação:
 ```bash
 python app.py
 ```
@@ -67,14 +44,40 @@ Acesse no navegador: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🧪 Como testar
 
-- [Python 3](https://www.python.org/)
-- [Flask](https://flask.palletsprojects.com/)
-- [Pillow (PIL)](https://python-pillow.org/)
+1. Acesse a interface web pelo navegador.
+2. Clique em **"Escolher arquivo"** e selecione uma imagem do seu computador.
+3. Escolha um filtro no menu suspenso.
+4. Clique em **"Aplicar Filtro"**.
+5. A imagem original e a imagem com o filtro aplicado serão exibidas lado a lado.
+6. Você pode **baixar a imagem processada** clicando no botão de download.
 
 ---
 
-## 👤 Autor
+## 📁 Estrutura de Pastas
 
-Desenvolvido por **Marcondes Neto**. 🚀
+```
+├── app.py
+├── filtros.py
+├── static
+│   ├── uploads          # Imagens enviadas
+│   ├── processed        # Imagens processadas
+│   └── style.css        # Estilo da interface
+├── templates
+│   └── index.html       # Página principal
+└── README.md
+```
+
+---
+
+## 📌 Requisitos
+- Python 3.7+
+- Flask
+- Pillow
+- NumPy
+
+---
+
+## 📄 Licença
+Este projeto é livre para uso acadêmico e educacional.

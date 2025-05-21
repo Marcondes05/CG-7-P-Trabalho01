@@ -1,52 +1,47 @@
-from PIL import Image, ImageFilter, ImageOps
-import os
+from PIL import Image, ImageFilter, ImageChops
+import numpy as np
+import random
+import math
 
-def aplicar_filtro(caminho_imagem, filtro, pasta_saida):
-    """
-    Aplica um filtro de imagem com base na opção escolhida.
+# Filtro negativo
+def filtro_negativo(img):
+    matriz = img.load()
+    largura, altura = img.size
+    for i in range(largura):
+        for j in range(altura):
+            pixel = ((255 - matriz[i,j][0]), (255 - matriz[i,j][1]), (255 - matriz[i,j][2]))
+            matriz[i,j] = pixel
+    return img
 
-    Parâmetros:
-    - caminho_imagem: caminho da imagem original
-    - filtro: tipo de filtro a aplicar ('negativo', 'mediana', 'gaussiano', 'personalizado')
-    - pasta_saida: pasta onde a imagem processada será salva
+# Filtro escala de cinza
+def filtro_escala_cinza(img):
+    matriz = img.load()
+    largura, altura = img.size
+    for i in range(largura):
+        for j in range(altura):
+            media = int((matriz[i,j][0] + matriz[i,j][1] + matriz[i,j][2]) / 3)
+            pixel = (media, media, media)
+            matriz[i,j] = pixel
+    return img
 
-    Retorna:
-    - caminho completo da imagem processada
-    """
+# Filtro preto e branco
+def filtro_preto_branco(img):
+    matriz = img.load()
+    largura, altura = img.size
+    for i in range(largura):
+        for j in range(altura):
+            media = int((matriz[i,j][0] + matriz[i,j][1] + matriz[i,j][2]) / 3)
+            if media < 128:
+                pixel = (0, 0, 0)
+            else:
+                pixel = (255, 255, 255)
+            matriz[i,j] = pixel
+    return img
 
-    # Abre a imagem original
-    img = Image.open(caminho_imagem)
+# Filtro mediana
+def filtro_mediana(img):
+    return img.filter(ImageFilter.MedianFilter(size=3))
 
-    # Define o nome do arquivo de saída com o nome do filtro aplicado
-    nome_saida = os.path.basename(caminho_imagem).split('.')[0] + f'_{filtro}.png'
-    caminho_saida = os.path.join(pasta_saida, nome_saida)
-
-    # Aplica o filtro correspondente
-    if filtro == 'negativo':
-        # Inverte as cores (necessário converter para RGB antes)
-        img = ImageOps.invert(img.convert('RGB'))
-
-    elif filtro == 'mediana':
-        # Aplica filtro da mediana (reduz ruídos)
-        img = img.filter(ImageFilter.MedianFilter(size=3))
-
-    elif filtro == 'gaussiano':
-        # Aplica desfoque gaussiano com raio 5
-        img = img.filter(ImageFilter.GaussianBlur(radius=5))
-
-    elif filtro == 'personalizado':
-        # Aplica um filtro de detecção de bordas com kernel definido
-        kernel = ImageFilter.Kernel(
-            (3, 3),
-            [-1, -1, -1,
-             -1, 8, -1,
-             -1, -1, -1],
-            scale=1
-        )
-        img = img.filter(kernel)
-
-    # Salva a imagem modificada na pasta de saída
-    img.save(caminho_saida)
-
-    # Retorna o caminho da imagem processada
-    return caminho_saida
+# Filtro gaussiano
+def filtro_gaussiano(img, radius=2):
+    return img.filter(ImageFilter.GaussianBlur(radius))
