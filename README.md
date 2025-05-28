@@ -30,7 +30,7 @@ venv\Scripts\activate    # Windows
 ```bash
 pip install -r requirements.txt
 ```
-> **Obs:** Caso não tenha um arquivo `requirements.txt`, instale manualmente:
+> **Obs:** Outra forma instalando manualmente:
 ```bash
 pip install flask pillow numpy
 ```
