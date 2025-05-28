@@ -79,5 +79,4 @@ Acesse no navegador: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 📄 Licença
 Este projeto é livre para uso acadêmico e educacional.
